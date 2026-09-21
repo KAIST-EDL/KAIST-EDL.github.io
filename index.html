@@ -1,0 +1,936 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="EDL-LAB at KAIST (Electrochemistry Discovery Laboratory, PI Dong Young Chung): electrochemistry, electrocatalysis and electroanalytical chemistry.">
+<meta property="og:title" content="EDL-LAB at KAIST">
+<meta property="og:description" content="Electrochemistry, electrocatalysis and electroanalytical chemistry at KAIST.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230A3D91'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' font-weight='600' text-anchor='middle' fill='white'%3EE%3C/text%3E%3C/svg%3E">
+<title>EDL-LAB at KAIST</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<style>
+:root {
+  --bg: #FAFBFD;
+  --surface: #FFFFFF;
+  --tint: #EEF3FB;
+  --ink: #0C1A33;
+  --muted: #56637A;
+  --line: #DCE3EE;
+  --guide: #9FB0CB;
+  --accent: #0A3D91;
+  --accent-2: #3F6FC4;
+  --accent-soft: #D5E2F7;
+  --on-accent: #FFFFFF;
+  --on-cat: #FFFFFF;
+  --band: #0A3D91;
+  --on-band: #FFFFFF;
+  --on-band-muted: #C9D8F4;
+  --display: 'Newsreader', 'Iowan Old Style', Georgia, serif;
+  --sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0A111F;
+    --surface: #0F182B;
+    --tint: #101C33;
+    --ink: #E7EDF8;
+    --muted: #9AA8C2;
+    --line: #23304A;
+    --guide: #3A4C70;
+    --accent: #7EA6FF;
+    --accent-2: #5B8DEF;
+    --accent-soft: #1B2C4D;
+    --on-accent: #0A111F;
+    --on-cat: #0A111F;
+    --band: #12306B;
+    --on-band: #FFFFFF;
+    --on-band-muted: #B5C6E8;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0A111F;
+  --surface: #0F182B;
+  --tint: #101C33;
+  --ink: #E7EDF8;
+  --muted: #9AA8C2;
+  --line: #23304A;
+  --guide: #3A4C70;
+  --accent: #7EA6FF;
+  --accent-2: #5B8DEF;
+  --accent-soft: #1B2C4D;
+  --on-accent: #0A111F;
+  --on-cat: #0A111F;
+  --band: #12306B;
+  --on-band: #FFFFFF;
+  --on-band-muted: #B5C6E8;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, p, ul, dl, dd, figure { margin: 0; }
+a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { width: 100%; max-width: 1120px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 32px); }
+.mono { font-family: var(--mono); }
+.tag {
+  font-family: var(--mono); font-weight: 500; font-size: .72rem;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--accent);
+}
+
+/* ---------- Header ---------- */
+.site-head {
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  border-bottom: 1px solid var(--line);
+}
+.site-head .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 24px; padding-block: 12px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-family: var(--mono); font-weight: 500; letter-spacing: .06em; font-size: .95rem; }
+.brand span small { color: var(--muted); font-weight: 400; letter-spacing: .04em; }
+.brand svg { display: block; }
+.nav { display: flex; flex-wrap: wrap; gap: 4px 22px; font-size: .9rem; }
+.nav a { color: var(--muted); text-decoration: none; padding-block: 4px; border-bottom: 1px solid transparent; transition: color .15s, border-color .15s; }
+.nav a:hover { color: var(--ink); border-bottom-color: var(--accent); }
+@media (min-width: 640px) {
+  .site-head { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+}
+
+/* ---------- Hero ---------- */
+.hero { padding-block: clamp(40px, 7vw, 88px) clamp(48px, 7vw, 88px); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); gap: clamp(32px, 6vw, 72px); align-items: center; }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
+.hero h1 {
+  font-family: var(--display); font-weight: 400; letter-spacing: -.02em; line-height: 1.08;
+  font-size: clamp(2.3rem, 5.2vw, 3.7rem); text-wrap: balance; margin-top: 18px;
+}
+.hero .lede { margin-top: 22px; max-width: 34em; font-size: 1.075rem; color: var(--muted); }
+.cta { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; margin-top: 30px; }
+.btn {
+  display: inline-block; background: var(--accent); color: var(--on-accent); text-decoration: none;
+  font-weight: 500; font-size: .95rem; padding: 11px 20px; border-radius: 4px; border: 1px solid var(--accent);
+  transition: opacity .15s;
+}
+.btn:hover { opacity: .9; text-decoration: none; }
+.btn-ghost { background: transparent; color: var(--accent); }
+.btn-ghost:hover { background: var(--accent-soft); opacity: 1; }
+.facts { display: grid; gap: 10px; margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--line); font-size: .9rem; }
+.facts div { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 12px; }
+.facts dt { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding-top: .2em; }
+.facts dd { color: var(--ink); }
+
+.figure { background: var(--tint); border: 1px solid var(--line); border-radius: 6px; padding: clamp(14px, 3vw, 26px); }
+.figure svg { display: block; width: 100%; height: auto; max-width: 480px; margin-inline: auto; }
+.figure figcaption { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); font-size: .8rem; line-height: 1.5; color: var(--muted); }
+.edl .el { fill: var(--accent); }
+.edl .band { fill: url(#edl-diffuse); }
+.edl .s0 { stop-color: var(--accent); stop-opacity: .17; }
+.edl .s1 { stop-color: var(--accent); stop-opacity: 0; }
+.edl .guide { stroke: var(--guide); stroke-width: 1; stroke-dasharray: 3 4; fill: none; }
+.edl .axis { stroke: var(--muted); stroke-width: 1; fill: none; }
+.edl .curve { stroke: var(--accent); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.edl .ring { stroke: var(--accent-2); stroke-width: 1.2; stroke-dasharray: 2 3; fill: none; opacity: .75; }
+.edl .cat { fill: var(--accent-2); }
+.edl .ani { fill: var(--surface); stroke: var(--muted); stroke-width: 1.4; }
+.edl .wo { fill: var(--accent); }
+.edl .wh { fill: var(--accent-2); }
+.edl text { font-family: var(--mono); fill: var(--muted); font-size: 13px; }
+.edl .lbl { letter-spacing: .08em; }
+.edl .on { fill: #FFFFFF; font-weight: 500; letter-spacing: .14em; font-size: 12px; }
+.edl .sign { fill: var(--on-cat); font-family: var(--sans); font-size: 14px; font-weight: 600; text-anchor: middle; dominant-baseline: central; }
+.edl .neg { fill: #FFFFFF; font-family: var(--sans); font-size: 18px; text-anchor: middle; dominant-baseline: central; }
+.edl .k { fill: var(--ink); }
+.edl .hd { font-size: 12px; letter-spacing: .06em; fill: var(--muted); }
+.edl .sm { font-size: 12px; }
+.edl .acc { fill: var(--accent); }
+.edl .c { text-anchor: middle; }
+.edl .mid { dominant-baseline: central; }
+.edl .ln { stroke: var(--muted); stroke-width: 1.2; fill: none; }
+.edl .ln-a { stroke: var(--accent); stroke-width: 1.4; fill: none; }
+.edl .ah { fill: var(--muted); }
+.edl .aha { fill: var(--accent); }
+.edl .box { fill: var(--surface); stroke: var(--guide); stroke-width: 1.2; }
+.edl .bub { fill: none; stroke: var(--accent-2); stroke-width: 1.2; }
+.edl .mem { fill: var(--accent-soft); }
+.edl .seg-a { fill: var(--accent); }
+.edl .seg-b { fill: var(--accent-2); }
+.edl .seg-c { fill: var(--surface); stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 3 3; }
+.edl .onfill { fill: var(--on-cat); }
+.edl .asign { fill: var(--muted); font-family: var(--sans); font-size: 13px; font-weight: 600; text-anchor: middle; dominant-baseline: central; }
+
+/* ---------- Sections ---------- */
+.sec { padding-block: clamp(48px, 7vw, 88px); border-top: 1px solid var(--line); }
+.sec-grid { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: clamp(24px, 5vw, 72px); }
+@media (max-width: 860px) { .sec-grid { grid-template-columns: 1fr; } }
+@media (min-width: 861px) { .sec-head { position: sticky; top: 92px; align-self: start; } }
+.sec-head h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.75rem, 3.4vw, 2.3rem); letter-spacing: -.01em; line-height: 1.15; text-wrap: balance; }
+.sec-head p { margin-top: 12px; color: var(--muted); font-size: .95rem; max-width: 28em; }
+section[id] { scroll-margin-top: 72px; }
+
+/* Research */
+.theme { padding-block: 30px; border-top: 1px solid var(--line); }
+.theme:first-child { border-top: 0; padding-top: 0; }
+.theme h3 { font-family: var(--display); font-weight: 400; font-size: 1.55rem; line-height: 1.25; margin-top: 8px; text-wrap: balance; }
+.theme { container-type: inline-size; }
+.theme-in { display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px 40px; align-items: start; }
+@container (min-width: 660px) { .theme-in { grid-template-columns: minmax(0, 1fr) 400px; } }
+.theme-txt > p:not(.tag) { margin-top: 10px; max-width: 40em; }
+.figure.sch { padding: clamp(10px, 2.6vw, 16px); }
+.figure.sch svg { max-width: 440px; }
+.figure.sch figcaption { margin-top: 10px; padding-top: 10px; }
+.theme ul { list-style: none; padding: 0; margin-top: 16px; display: grid; gap: 8px; max-width: 42em; }
+.theme li { position: relative; padding-left: 20px; color: var(--muted); }
+.theme li::before { content: ""; position: absolute; left: 0; top: .82em; width: 10px; height: 1px; background: var(--accent); }
+.scope { margin-top: 12px; padding-top: 28px; border-top: 1px solid var(--line); display: grid; gap: 18px; }
+.scope-row { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 8px 16px; align-items: baseline; }
+@media (max-width: 560px) { .scope-row { grid-template-columns: 1fr; } }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-size: .85rem; padding: 4px 11px; border: 1px solid var(--line); border-radius: 3px; background: var(--surface); color: var(--ink); }
+
+/* PI */
+.pi-top { display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: 28px clamp(24px, 4vw, 48px); align-items: start; }
+.pi-photo { width: 190px; max-width: 100%; height: auto; aspect-ratio: 3 / 4; object-position: 50% 22%; border-radius: 4px; object-fit: cover; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font: 500 2rem var(--mono); letter-spacing: .06em; }
+@media (max-width: 720px) { .pi-top { grid-template-columns: 1fr; } .pi-photo { order: -1; width: 150px; } }
+.pi-name { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.6vw, 2.4rem); letter-spacing: -.01em; line-height: 1.15; }
+.pi-role { margin-top: 6px; color: var(--muted); }
+.pi-bio { margin-top: 18px; max-width: 40em; }
+.pi-links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 18px; font-size: .95rem; }
+.pi-cols { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 32px clamp(24px, 4vw, 56px); margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--line); }
+@media (max-width: 720px) { .pi-cols { grid-template-columns: 1fr; } }
+.pi-cols h3, .sub-h { font-family: var(--mono); font-weight: 500; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.tl { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 12px 18px; }
+@media (max-width: 480px) { .tl { grid-template-columns: 1fr; gap: 2px; } .tl dd { margin-bottom: 12px; } }
+.tl dt { font-family: var(--mono); font-size: .8rem; color: var(--accent); padding-top: .18em; font-variant-numeric: tabular-nums; }
+.tl dd { line-height: 1.45; }
+.tl dd small { display: block; color: var(--muted); font-size: .85rem; }
+.edu { display: grid; gap: 22px; align-content: start; }
+.edu p { line-height: 1.45; }
+.edu small { display: block; color: var(--muted); font-size: .85rem; }
+
+/* Publications */
+.sub-h { margin-bottom: 4px; }
+.hl { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 4px 24px; padding-block: 18px; border-top: 1px solid var(--line); align-items: baseline; }
+.hl:first-of-type { border-top: 0; }
+.hl .ref { font-family: var(--mono); font-size: .8rem; color: var(--accent); }
+.hl .ttl { font-family: var(--display); font-size: 1.28rem; line-height: 1.3; text-wrap: pretty; }
+.hl .au { margin-top: 6px; color: var(--muted); font-size: .88rem; line-height: 1.5; }
+.au strong { color: var(--ink); font-weight: 600; }
+@media (max-width: 640px) { .hl { grid-template-columns: 1fr; } }
+.recent-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 14px 24px; margin-top: 44px; padding-top: 30px; border-top: 1px solid var(--line); }
+.filter { display: flex; flex-wrap: wrap; gap: 6px; }
+.fbtn {
+  font: 500 .78rem var(--mono); letter-spacing: .04em; color: var(--muted); background: transparent;
+  border: 1px solid var(--line); border-radius: 3px; padding: 6px 11px; cursor: pointer; transition: background .15s, color .15s, border-color .15s;
+}
+.fbtn:hover { color: var(--ink); border-color: var(--guide); }
+.fbtn[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.recent-head { justify-content: space-between; align-items: baseline; }
+.count { font-size: .78rem; color: var(--muted); }
+.recent-head + .filter { margin-top: 14px; }
+.search { margin-top: 14px; }
+.q { width: 100%; max-width: 24rem; font: inherit; font-size: .92rem; padding: 9px 12px; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; }
+.q::placeholder { color: var(--muted); }
+.q:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+#pub-list { margin-top: 18px; }
+.pub .no { display: block; color: var(--accent); }
+.pub .note { margin-top: 5px; font-size: .82rem; color: var(--accent); }
+.eqn { color: var(--muted); font-size: .8rem; white-space: nowrap; }
+.none { padding-block: 24px; color: var(--muted); }
+.pub { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 4px 24px; padding-block: 15px; border-top: 1px solid var(--line); }
+.pub .ref { font-family: var(--mono); font-size: .76rem; line-height: 1.55; color: var(--muted); font-variant-numeric: tabular-nums; }
+.pub .ttl { font-weight: 500; line-height: 1.42; text-wrap: pretty; }
+.pub .au { margin-top: 3px; color: var(--muted); font-size: .88rem; }
+.corr { display: inline-block; margin-left: 8px; font: 500 .64rem var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent-soft); background: var(--accent-soft); border-radius: 3px; padding: 1px 6px; vertical-align: 1px; white-space: nowrap; }
+@media (max-width: 640px) { .pub { grid-template-columns: 1fr; } }
+.more { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); font-size: .95rem; }
+
+/* People */
+.grp { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 14px 24px; padding-block: 24px; border-top: 1px solid var(--line); }
+.grp:first-child { border-top: 0; padding-top: 0; }
+@media (max-width: 640px) { .grp { grid-template-columns: 1fr; } }
+.grp h3 { font-family: var(--mono); font-weight: 500; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-top: .3em; }
+.roster { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 24px 28px; list-style: none; padding: 0; }
+.person { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 14px; align-items: start; }
+.ph {
+  display: grid; place-items: center; width: 72px; height: auto; aspect-ratio: 4 / 5; border-radius: 4px; object-fit: cover; object-position: 50% 15%;
+  background: var(--accent-soft); color: var(--accent); font: 500 .85rem var(--mono); letter-spacing: .04em;
+}
+.person .n { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; font-weight: 500; }
+.person .role { margin-left: 0; font: 500 .64rem var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); border-radius: 3px; padding: 1px 6px; vertical-align: 1px; white-space: nowrap; }
+.person .em { margin-top: 4px; font-family: var(--mono); font-size: .76rem; overflow-wrap: anywhere; }
+.person .em a { color: var(--accent); }
+.person .bg { color: var(--muted); font-size: .86rem; line-height: 1.45; margin-top: 2px; }
+.alumni { display: grid; gap: 0; list-style: none; padding: 0; }
+.alumni li { display: grid; grid-template-columns: 4.5rem minmax(0, 12rem) minmax(0, 1fr); gap: 4px 16px; padding-block: 9px; border-top: 1px solid var(--line); font-size: .93rem; }
+.alumni li:first-child { border-top: 0; padding-top: 0; }
+.alumni .y { font-family: var(--mono); font-size: .8rem; color: var(--accent); padding-top: .12em; }
+.alumni .d { color: var(--muted); }
+@media (max-width: 560px) { .alumni li { grid-template-columns: 4rem 1fr; } .alumni .d { grid-column: 2; } }
+
+/* Album */
+.alb-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; }
+.alb-list { margin-top: 18px; }
+.alb-row { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 4px 24px; padding-block: 12px; border-top: 1px solid var(--line); }
+.alb-row .cat { font: 500 .72rem var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); padding-top: .25em; }
+.alb-row .cap { line-height: 1.45; }
+@media (max-width: 560px) { .alb-row { grid-template-columns: 1fr; } }
+.alb-grid { margin-top: 18px; display: grid; grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr)); gap: 22px 18px; }
+.alb-item { margin: 0; }
+.alb-ph { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 4 / 3; border: 1px dashed var(--guide); border-radius: 4px; background: var(--tint); color: var(--guide); }
+.alb-ph svg { display: block; }
+.alb-ph .no { position: absolute; left: 10px; top: 8px; font: 500 .7rem var(--mono); letter-spacing: .06em; color: var(--muted); }
+.alb-item img { cursor: zoom-in; object-position: 50% 35%; }
+.dlg { max-width: min(92vw, 980px); padding: 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); }
+.dlg::backdrop { background: rgba(6, 12, 24, .72); }
+.dlg img { display: block; max-width: 100%; max-height: 78vh; margin-inline: auto; border-radius: 3px; }
+.dlg p { margin-top: 10px; font-size: .9rem; color: var(--muted); }
+.dlg-x { position: absolute; right: 8px; top: 6px; z-index: 1; width: 32px; height: 32px; border: 0; border-radius: 4px; background: var(--surface); color: var(--ink); font-size: 1.4rem; line-height: 1; cursor: pointer; }
+.alb-item img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; background: var(--tint); }
+.alb-item figcaption { margin-top: 8px; font-size: .86rem; line-height: 1.4; color: var(--muted); }
+.alb-item .cat { display: block; margin-bottom: 2px; font: 500 .66rem var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+
+/* Contact */
+.contact { background: var(--band); color: var(--on-band); padding-block: clamp(52px, 7vw, 88px); }
+.contact .sec-grid { align-items: start; }
+.contact h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.9rem, 3.8vw, 2.6rem); letter-spacing: -.01em; line-height: 1.12; text-wrap: balance; }
+.contact .join { margin-top: 16px; max-width: 30em; color: var(--on-band-muted); }
+.contact a { color: var(--on-band); }
+.mail { font-family: var(--display); font-size: clamp(1.4rem, 3vw, 1.9rem); text-decoration-thickness: 1px; }
+.addr { display: grid; gap: 22px; margin-top: 4px; }
+.addr dt { font-family: var(--mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--on-band-muted); margin-bottom: 4px; }
+.addr dd { line-height: 1.5; }
+.foot { padding-block: 22px; font-size: .8rem; color: var(--muted); }
+.foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; }
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="EDL-LAB home">
+      <svg width="22" height="22" viewBox="0 0 22 22" role="presentation" aria-hidden="true">
+        <rect x="1" y="1" width="5" height="20" fill="var(--accent)"/>
+        <line x1="11" y1="1" x2="11" y2="21" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="2 2.5"/>
+        <line x1="17" y1="1" x2="17" y2="21" stroke="var(--accent-2)" stroke-width="1.5" stroke-dasharray="2 2.5"/>
+      </svg>
+      <span>EDL-LAB <small>/ KAIST</small></span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#research">Research</a>
+      <a href="#pi">PI</a>
+      <a href="#people">People</a>
+      <a href="#publications">Publications</a>
+      <a href="#album">Album</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="tag">Electrochemistry Discovery Laboratory</p>
+        <h1 id="hero-title">Electrochemistry for interface design and engineering</h1>
+        <p class="lede">We study how structure, composition and solvation at the electrode–electrolyte interface set reaction kinetics, selectivity and stability, and turn that understanding into catalysts, diagnostics and devices for hydrogen and CO₂ conversion.</p>
+        <div class="cta">
+          <a class="btn" href="#research">Explore our research</a>
+          <a class="btn btn-ghost" href="#publications">Publications</a>
+        </div>
+        <dl class="facts">
+          <div><dt>Affiliation</dt><dd>Department of Chemical &amp; Biomolecular Engineering, KAIST</dd></div>
+          <div><dt>PI</dt><dd>Dong Young Chung, Associate Professor</dd></div>
+          <div><dt>Focus</dt><dd>Electrochemistry · Electrocatalysis · Electroanalytical chemistry</dd></div>
+        </dl>
+      </div>
+
+      <figure class="figure">
+        <svg class="edl" viewBox="0 0 440 404" role="img" aria-labelledby="edl-t edl-d">
+          <title id="edl-t">Electric double layer at a negatively charged electrode</title>
+          <desc id="edl-d">Schematic showing water molecules at the inner Helmholtz plane, hydrated cations at the outer Helmholtz plane, a diffuse layer of ions, and the potential profile decaying from the electrode to the bulk.</desc>
+          <defs>
+            <linearGradient id="edl-diffuse" x1="0" y1="0" x2="1" y2="0">
+              <stop class="s0" offset="0"/>
+              <stop class="s1" offset="1"/>
+            </linearGradient>
+          </defs>
+
+          <!-- regions -->
+          <rect class="band" x="134" y="24" width="296" height="252"/>
+          <rect class="el" x="0" y="24" width="56" height="252"/>
+          <text class="on" transform="translate(20 150) rotate(-90)" text-anchor="middle">ELECTRODE</text>
+          <g>
+            <text class="neg" x="43" y="52">−</text><text class="neg" x="43" y="94">−</text>
+            <text class="neg" x="43" y="136">−</text><text class="neg" x="43" y="178">−</text>
+            <text class="neg" x="43" y="220">−</text><text class="neg" x="43" y="252">−</text>
+          </g>
+
+          <!-- guides -->
+          <line class="guide" x1="80" y1="24" x2="80" y2="374"/>
+          <line class="guide" x1="134" y1="24" x2="134" y2="374"/>
+          <text class="lbl" x="80" y="14" text-anchor="middle">IHP</text>
+          <text class="lbl" x="134" y="14" text-anchor="middle">OHP</text>
+          <text class="lbl" x="290" y="14" text-anchor="middle">DIFFUSE LAYER</text>
+
+          <!-- water dipoles at IHP (H toward the negative surface) -->
+          <g>
+            <circle class="wo" cx="80" cy="48" r="5"/><circle class="wh" cx="72" cy="42" r="2.6"/><circle class="wh" cx="72" cy="54" r="2.6"/>
+            <circle class="wo" cx="80" cy="96" r="5"/><circle class="wh" cx="72" cy="90" r="2.6"/><circle class="wh" cx="72" cy="102" r="2.6"/>
+            <circle class="wo" cx="80" cy="144" r="5"/><circle class="wh" cx="72" cy="138" r="2.6"/><circle class="wh" cx="72" cy="150" r="2.6"/>
+            <circle class="wo" cx="80" cy="192" r="5"/><circle class="wh" cx="72" cy="186" r="2.6"/><circle class="wh" cx="72" cy="198" r="2.6"/>
+            <circle class="wo" cx="80" cy="240" r="5"/><circle class="wh" cx="72" cy="234" r="2.6"/><circle class="wh" cx="72" cy="246" r="2.6"/>
+          </g>
+
+          <!-- hydrated cations at OHP -->
+          <g>
+            <circle class="ring" cx="134" cy="64" r="19"/><circle class="cat" cx="134" cy="64" r="11"/><text class="sign" x="134" y="64">+</text>
+            <circle class="ring" cx="134" cy="124" r="19"/><circle class="cat" cx="134" cy="124" r="11"/><text class="sign" x="134" y="124">+</text>
+            <circle class="ring" cx="134" cy="184" r="19"/><circle class="cat" cx="134" cy="184" r="11"/><text class="sign" x="134" y="184">+</text>
+            <circle class="ring" cx="134" cy="244" r="19"/><circle class="cat" cx="134" cy="244" r="11"/><text class="sign" x="134" y="244">+</text>
+          </g>
+
+          <!-- diffuse layer: cations thin out with distance, anions appear -->
+          <g>
+            <circle class="cat" cx="186" cy="50" r="9"/><text class="sign" x="186" y="50">+</text>
+            <circle class="cat" cx="190" cy="110" r="9"/><text class="sign" x="190" y="110">+</text>
+            <circle class="cat" cx="186" cy="170" r="9"/><text class="sign" x="186" y="170">+</text>
+            <circle class="cat" cx="192" cy="230" r="9"/><text class="sign" x="192" y="230">+</text>
+            <circle class="cat" cx="240" cy="80" r="9"/><text class="sign" x="240" y="80">+</text>
+            <circle class="cat" cx="252" cy="190" r="9"/><text class="sign" x="252" y="190">+</text>
+            <circle class="cat" cx="234" cy="250" r="9"/><text class="sign" x="234" y="250">+</text>
+            <circle class="cat" cx="312" cy="140" r="9"/><text class="sign" x="312" y="140">+</text>
+            <circle class="cat" cx="332" cy="58" r="9"/><text class="sign" x="332" y="58">+</text>
+            <circle class="cat" cx="300" cy="232" r="9"/><text class="sign" x="300" y="232">+</text>
+            <circle class="cat" cx="392" cy="112" r="9"/><text class="sign" x="392" y="112">+</text>
+            <circle class="cat" cx="404" cy="224" r="9"/><text class="sign" x="404" y="224">+</text>
+
+            <circle class="ani" cx="282" cy="96" r="8"/><text class="asign" x="282" y="96">−</text>
+            <circle class="ani" cx="276" cy="168" r="8"/><text class="asign" x="276" y="168">−</text>
+            <circle class="ani" cx="352" cy="190" r="8"/><text class="asign" x="352" y="190">−</text>
+            <circle class="ani" cx="420" cy="62" r="8"/><text class="asign" x="420" y="62">−</text>
+            <circle class="ani" cx="372" cy="254" r="8"/><text class="asign" x="372" y="254">−</text>
+          </g>
+
+          <!-- potential profile -->
+          <line class="axis" x1="0" y1="374" x2="430" y2="374"/>
+          <path class="curve" d="M0 300 L56 300 L134 346 C 190 370, 300 372, 430 373"/>
+          <text x="204" y="338">potential φ(x)</text>
+          <text x="430" y="360" text-anchor="end">bulk, φ = 0</text>
+          <text x="430" y="396" text-anchor="end">distance from surface →</text>
+        </svg>
+        <figcaption>Electric double layer at a negatively charged electrode: water at the inner Helmholtz plane (IHP), hydrated cations at the outer Helmholtz plane (OHP), and a diffuse layer that relaxes to the bulk. Schematic, not to scale.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Research -->
+  <section class="sec" id="research" aria-labelledby="research-h">
+    <div class="wrap sec-grid">
+      <div class="sec-head">
+        <h2 id="research-h">Research</h2>
+        <p>Three connected lines of work, from model catalysts at the atomic scale to membrane–electrode assemblies under industrial conditions.</p>
+      </div>
+      <div>
+        <article class="theme">
+          <div class="theme-in">
+            <div class="theme-txt">
+              <p class="tag">Interface</p>
+              <h3>Electrochemical interface design</h3>
+              <p>How structure, composition and solvation environment at the electrode–electrolyte interface affect reaction kinetics, selectivity and stability.</p>
+              <ul>
+              <li>Uncovering activity–stability relationships through model catalyst studies</li>
+              <li>Controlling activity, stability and selectivity via electric double layer (EDL) modulation</li>
+              <li>Probing interfacial structures with real-time analytical techniques</li>
+              </ul>
+            </div>
+            <figure class="figure sch">
+        <svg class="edl sch" viewBox="0 0 440 240" role="img" aria-label="Structure, solvation and ion composition tune the electrode–electrolyte interface, which determines kinetics, selectivity and stability; model catalysts feed activity–stability relationships back into design.">
+          <defs>
+            <linearGradient id="s1-diffuse" x1="0" y1="0" x2="1" y2="0"><stop class="s0" offset="0"/><stop class="s1" offset="1"/></linearGradient>
+            <marker id="s1-ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M1 1.2 L9 5 L1 8.8 Z"/></marker>
+            <marker id="s1-aha" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="aha" d="M1 1.2 L9 5 L1 8.8 Z"/></marker>
+          </defs>
+          <text class="hd" x="0" y="14">STRUCTURE</text>
+          <text class="hd" x="116" y="14" text-anchor="middle">SOLVATION</text>
+          <text class="hd" x="218" y="14" text-anchor="middle">COMPOSITION</text>
+          <text class="hd" x="348" y="14">DETERMINES</text>
+          <path class="ln" d="M22 22 V42" marker-end="url(#s1-ah)"/>
+          <path class="ln" d="M116 22 V48" marker-end="url(#s1-ah)"/>
+          <path class="ln" d="M218 22 V42" marker-end="url(#s1-ah)"/>
+
+          <rect x="116" y="46" width="184" height="150" fill="url(#s1-diffuse)"/>
+          <rect class="el" x="0" y="46" width="44" height="150"/>
+          <text class="on" transform="translate(23 121) rotate(-90)" text-anchor="middle">ELECTRODE</text>
+          <line class="guide" x1="72" y1="46" x2="72" y2="196"/>
+          <line class="guide" x1="116" y1="46" x2="116" y2="196"/>
+          <g><circle class="wo" cx="72" cy="62" r="4.5"/><circle class="wh" cx="65" cy="57" r="2.3"/><circle class="wh" cx="65" cy="67" r="2.3"/><circle class="wo" cx="72" cy="92" r="4.5"/><circle class="wh" cx="65" cy="87" r="2.3"/><circle class="wh" cx="65" cy="97" r="2.3"/><circle class="wo" cx="72" cy="122" r="4.5"/><circle class="wh" cx="65" cy="117" r="2.3"/><circle class="wh" cx="65" cy="127" r="2.3"/><circle class="wo" cx="72" cy="152" r="4.5"/><circle class="wh" cx="65" cy="147" r="2.3"/><circle class="wh" cx="65" cy="157" r="2.3"/><circle class="wo" cx="72" cy="182" r="4.5"/><circle class="wh" cx="65" cy="177" r="2.3"/><circle class="wh" cx="65" cy="187" r="2.3"/></g>
+          <g><circle class="ring" cx="116" cy="71" r="17"/><circle class="cat" cx="116" cy="71" r="10"/><text class="sign" x="116" y="71">+</text><circle class="ring" cx="116" cy="121" r="17"/><circle class="cat" cx="116" cy="121" r="10"/><text class="sign" x="116" y="121">+</text><circle class="ring" cx="116" cy="171" r="17"/><circle class="cat" cx="116" cy="171" r="10"/><text class="sign" x="116" y="171">+</text></g>
+          <g><circle class="cat" cx="163" cy="58" r="8.5"/><text class="sign" x="163" y="58">+</text><circle class="cat" cx="167" cy="104" r="8.5"/><text class="sign" x="167" y="104">+</text><circle class="cat" cx="163" cy="150" r="8.5"/><text class="sign" x="163" y="150">+</text><circle class="cat" cx="169" cy="188" r="8.5"/><text class="sign" x="169" y="188">+</text><circle class="cat" cx="205" cy="84" r="8.5"/><text class="sign" x="205" y="84">+</text><circle class="cat" cx="214" cy="168" r="8.5"/><text class="sign" x="214" y="168">+</text><circle class="cat" cx="256" cy="120" r="8.5"/><text class="sign" x="256" y="120">+</text><circle class="cat" cx="273" cy="60" r="8.5"/><text class="sign" x="273" y="60">+</text><circle class="cat" cx="265" cy="184" r="8.5"/><text class="sign" x="265" y="184">+</text><circle class="ani" cx="214" cy="122" r="7.5"/><text class="asign" x="214" y="122">−</text><circle class="ani" cx="245" cy="72" r="7.5"/><text class="asign" x="245" y="72">−</text><circle class="ani" cx="238" cy="152" r="7.5"/><text class="asign" x="238" y="152">−</text><circle class="ani" cx="285" cy="136" r="7.5"/><text class="asign" x="285" y="136">−</text><circle class="ani" cx="289" cy="186" r="7.5"/><text class="asign" x="289" y="186">−</text></g>
+
+          <path class="ln" d="M306 121 C 322 121, 322 70, 340 70" marker-end="url(#s1-ah)"/>
+          <path class="ln" d="M306 121 H 340" marker-end="url(#s1-ah)"/>
+          <path class="ln" d="M306 121 C 322 121, 322 172, 340 172" marker-end="url(#s1-ah)"/>
+          <text class="k mid" x="348" y="70">Kinetics</text>
+          <text class="k mid" x="348" y="121">Selectivity</text>
+          <text class="k mid" x="348" y="172">Stability</text>
+
+          <path class="ln-a" d="M392 190 V228 H22 V203" marker-end="url(#s1-aha)"/>
+          <text class="sm acc c" x="206" y="218">model catalysts → activity–stability relationships</text>
+        </svg>
+              <figcaption>Structure, solvation and ion composition tune the interface, which determines kinetics, selectivity and stability. Schematic, not to scale.</figcaption>
+            </figure>
+          </div>
+        </article>
+        <article class="theme">
+          <div class="theme-in">
+            <div class="theme-txt">
+              <p class="tag">Diagnostics</p>
+              <h3>Development of diagnostic protocols</h3>
+              <p>Protocols to assess the performance and degradation of electrochemical systems under realistic operating conditions.</p>
+              <ul>
+              <li>Standardized testing platforms for water electrolysis, fuel cells and CO₂ reduction</li>
+              <li>Operando diagnostics using in situ ICP-MS, MS and EIS</li>
+              <li>Test designs that separate intrinsic catalytic activity from mass-transport and degradation effects</li>
+              </ul>
+            </div>
+            <figure class="figure sch">
+        <svg class="edl sch" viewBox="0 0 440 248" role="img" aria-label="Three operando probes on a running cell each isolate one part of its measured performance: online MS for product rates, EIS for resistances, in situ ICP-MS for dissolution. This separates intrinsic activity from transport losses and degradation.">
+          <defs>
+            <marker id="s2-ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M1 1.2 L9 5 L1 8.8 Z"/></marker>
+            <marker id="s2-aha" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="aha" d="M1 1.2 L9 5 L1 8.8 Z"/></marker>
+          </defs>
+          <text class="hd" x="0" y="14">CELL</text>
+          <text class="hd" x="212" y="14" text-anchor="middle">PROBE</text>
+          <text class="hd" x="304" y="14">REVEALS</text>
+
+          <rect class="box" x="0.6" y="28" width="99.8" height="142" rx="3"/>
+          <line class="guide" x1="50" y1="28" x2="50" y2="170"/>
+          <rect class="el" x="22" y="62" width="8" height="92"/>
+          <rect class="cat" x="70" y="62" width="8" height="92"/>
+          <circle class="bub" cx="26" cy="50" r="3"/><circle class="bub" cx="35" cy="43" r="2.5"/><circle class="bub" cx="27" cy="36" r="2"/>
+          <circle class="cat" cx="40" cy="140" r="2.6"/><circle class="cat" cx="57" cy="131" r="2.6"/><circle class="cat" cx="41" cy="118" r="2.6"/>
+          
+          <path class="ln" d="M104 60 H148" marker-end="url(#s2-ah)"/>
+          <text class="sm c" x="126" y="52">gas</text>
+          <rect class="box" x="154" y="46" width="116" height="28" rx="3"/>
+          <text class="sm k c mid" x="212" y="60">Online MS</text>
+          <path class="ln" d="M274 60 H298" marker-end="url(#s2-ah)"/>
+          <rect class="seg-a" x="306" y="55" width="10" height="10" rx="1.5"/>
+          <text class="k mid" x="322" y="60">Product rates</text>
+          
+          <path class="ln" d="M104 104 H148" marker-end="url(#s2-ah)" marker-start="url(#s2-ah)"/>
+          <text class="sm c" x="126" y="96">AC</text>
+          <rect class="box" x="154" y="90" width="116" height="28" rx="3"/>
+          <text class="sm k c mid" x="212" y="104">EIS</text>
+          <path class="ln" d="M274 104 H298" marker-end="url(#s2-ah)"/>
+          <rect class="seg-b" x="306" y="99" width="10" height="10" rx="1.5"/>
+          <text class="k mid" x="322" y="104">Resistances</text>
+          
+          <path class="ln" d="M104 148 H148" marker-end="url(#s2-ah)"/>
+          <text class="sm c" x="126" y="140">liquid</text>
+          <rect class="box" x="154" y="134" width="116" height="28" rx="3"/>
+          <text class="sm k c mid" x="212" y="148">In situ ICP-MS</text>
+          <path class="ln" d="M274 148 H298" marker-end="url(#s2-ah)"/>
+          <rect class="seg-c" x="306" y="143" width="10" height="10" rx="1.5"/>
+          <text class="k mid" x="322" y="148">Dissolution</text>
+
+          <text class="hd" x="0" y="196">MEASURED PERFORMANCE</text>
+          <text class="sm" x="440" y="196" text-anchor="end">illustrative split</text>
+          <rect class="seg-a" x="0" y="204" width="188" height="26" rx="2"/>
+          <rect class="seg-b" x="190" y="204" width="132" height="26" rx="2"/>
+          <rect class="seg-c" x="324.6" y="204.6" width="114.8" height="24.8" rx="2"/>
+          <text class="sm onfill c mid" x="94" y="217">Intrinsic activity</text>
+          <text class="sm onfill c mid" x="256" y="217">Transport losses</text>
+          <text class="sm c mid" x="382" y="217">Degradation</text>
+        </svg>
+              <figcaption>Each operando probe isolates one part of a running cell’s response, so intrinsic activity can be separated from transport losses and degradation. The split shown is illustrative.</figcaption>
+            </figure>
+          </div>
+        </article>
+        <article class="theme">
+          <div class="theme-in">
+            <div class="theme-txt">
+              <p class="tag">Translation</p>
+              <h3>From fundamentals to applications</h3>
+              <p>Connecting fundamental electrochemical studies with real-world performance.</p>
+              <ul>
+              <li>Building links between model catalysts and membrane–electrode assemblies (MEAs) and flow cells</li>
+              <li>Designing test protocols under industrially relevant conditions</li>
+              </ul>
+            </div>
+            <figure class="figure sch">
+        <svg class="edl sch" viewBox="0 0 440 240" role="img" aria-label="Model catalysts are transferred to membrane–electrode assemblies and flow cells; one set of test protocols under industrially relevant conditions spans all three.">
+          <defs>
+            <linearGradient id="s3-diffuse" x1="0" y1="0" x2="1" y2="0"><stop class="s0" offset="0"/><stop class="s1" offset="1"/></linearGradient>
+            <marker id="s3-ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M1 1.2 L9 5 L1 8.8 Z"/></marker>
+            <marker id="s3-aha" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="aha" d="M1 1.2 L9 5 L1 8.8 Z"/></marker>
+          </defs>
+          <text class="hd" x="0" y="14">FUNDAMENTALS</text>
+          <text class="hd" x="262" y="14">APPLICATIONS</text>
+
+          <rect x="64" y="48" width="42" height="124" fill="url(#s3-diffuse)"/>
+          <rect class="el" x="8" y="48" width="26" height="124"/>
+          <circle class="cat" cx="47" cy="58" r="6.5"/><circle class="cat" cx="47" cy="77" r="6.5"/><circle class="cat" cx="47" cy="96" r="6.5"/>
+          <circle class="cat" cx="47" cy="115" r="6.5"/><circle class="cat" cx="47" cy="134" r="6.5"/><circle class="cat" cx="47" cy="153" r="6.5"/>
+          <circle class="cat" cx="80" cy="74" r="6"/><text class="sign" x="80" y="74" style="font-size:11px">+</text><circle class="cat" cx="86" cy="146" r="6"/><text class="sign" x="86" y="146" style="font-size:11px">+</text><circle class="ani" cx="92" cy="110" r="5.5"/><text class="asign" x="92" y="110" style="font-size:11px">−</text>
+          <text class="k" x="0" y="190">Model catalyst</text>
+          <text class="sm" x="0" y="206">well-defined surface</text>
+
+          <path class="ln" d="M112 110 H186 V62 H256" marker-end="url(#s3-ah)"/>
+          <path class="ln" d="M186 110 V150 H256" marker-end="url(#s3-ah)"/>
+          <text class="sm c" x="149" y="102">transfer</text>
+
+          <rect class="box" x="262.6" y="34.6" width="10" height="54.8"/>
+          <rect class="cat" x="272.6" y="34" width="6" height="56"/>
+          <rect class="mem" x="278.6" y="34" width="24" height="56"/>
+          <rect class="cat" x="302.6" y="34" width="6" height="56"/>
+          <rect class="box" x="308.6" y="34.6" width="9.8" height="54.8"/>
+          <text class="k mid" x="332" y="62">MEA</text>
+
+          <rect class="box" x="262.6" y="124.6" width="55.8" height="51.8" rx="3"/>
+          <rect class="el" x="270" y="131" width="40" height="5"/>
+          <rect class="el" x="270" y="164" width="40" height="5"/>
+          <path class="ln" d="M270 150 H310" marker-end="url(#s3-ah)"/>
+          <text class="k mid" x="332" y="150">Flow cell</text>
+
+          <path class="ln-a" d="M0.6 221 V231 M0.6 226 H86 M354 226 H439.4 M439.4 221 V231"/>
+          <text class="sm acc c mid" x="220" y="226">industrially relevant test protocols</text>
+        </svg>
+              <figcaption>Model catalysts are transferred to MEAs and flow cells, and one set of test protocols under industrially relevant conditions spans all three.</figcaption>
+            </figure>
+          </div>
+        </article>
+        <div class="scope">
+          <div class="scope-row">
+            <p class="sub-h" style="margin:0">Systems</p>
+            <div class="chips">
+              <span class="chip">PEM &amp; AEM water electrolysis</span>
+              <span class="chip">Fuel cells</span>
+              <span class="chip">CO₂ reduction</span>
+              <span class="chip">Oxygen evolution catalysis</span>
+              <span class="chip">Single-atom catalysts</span>
+            </div>
+          </div>
+          <div class="scope-row">
+            <p class="sub-h" style="margin:0">Operando tools</p>
+            <div class="chips">
+              <span class="chip">In situ ICP-MS</span>
+              <span class="chip">Mass spectrometry</span>
+              <span class="chip">EIS</span>
+              <span class="chip">MEA testing</span>
+              <span class="chip">Flow cells</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PI -->
+  <section class="sec" id="pi" aria-labelledby="pi-h">
+    <div class="wrap sec-grid">
+      <div class="sec-head">
+        <h2 id="pi-h">Principal Investigator</h2>
+      </div>
+      <div>
+        <div class="pi-top">
+          <div>
+            <p class="pi-name">Dong Young Chung, Ph.D.</p>
+            <p class="pi-role">Associate Professor, Department of Chemical &amp; Biomolecular Engineering, KAIST</p>
+            <p class="pi-bio">Dong Young Chung leads the Electrochemistry Discovery Laboratory at KAIST. His group investigates the electrode–electrolyte interface and the electric double layer to understand and control the activity, stability and selectivity of electrocatalysts, and develops operando diagnostics that carry these insights into water electrolyzers, fuel cells and CO₂ reduction systems.</p>
+            <div class="pi-links">
+              <a href="mailto:dychung@kaist.ac.kr">dychung@kaist.ac.kr</a>
+              <a href="https://scholar.google.com/citations?user=2eYRWmYAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
+            </div>
+          </div>
+          <img class="pi-photo" src="img/pi.jpg" alt="Portrait of Dong Young Chung" width="570" height="760">
+        </div>
+
+        <div class="pi-cols">
+          <div>
+            <h3>Career</h3>
+            <dl class="tl">
+              <dt>2025 – present</dt><dd>Associate Professor<small>Department of Chemical &amp; Biomolecular Engineering, KAIST</small></dd>
+              <dt>2022 – 2025</dt><dd>Assistant Professor<small>KAIST</small></dd>
+              <dt>2020 – 2022</dt><dd>Assistant Professor<small>Department of Chemistry, GIST</small></dd>
+              <dt>2018 – 2020</dt><dd>Postdoctoral Appointee<small>Materials Science Division, Argonne National Laboratory</small></dd>
+              <dt>2016 – 2018</dt><dd>Visiting Scholar<small>Materials Science Division, Argonne National Laboratory</small></dd>
+              <dt>2016</dt><dd>Senior Researcher<small>Center for Nanoparticle Research, Institute for Basic Science</small></dd>
+              <dt>2014 – 2016</dt><dd>Researcher<small>Research Institute of Advanced Materials, Seoul National University</small></dd>
+            </dl>
+          </div>
+          <div class="edu">
+            <div>
+              <h3>Education</h3>
+              <p>Ph.D., Chemical and Biological Engineering<small>Seoul National University, 2010 – 2014</small></p>
+            </div>
+            <p>B.S., Chemical Engineering<small>Yonsei University, 2007 – 2010 (summa cum laude, completed in three years)</small></p>
+            <div>
+              <h3>Award</h3>
+              <p>POSCO Science Fellow<small>POSCO TJ Park Foundation, 2022</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- People -->
+  <section class="sec" id="people" aria-labelledby="people-h">
+    <div class="wrap sec-grid">
+      <div class="sec-head">
+        <h2 id="people-h">People</h2>
+        <p>Current members and alumni of the lab.</p>
+      </div>
+      <div>
+        <div class="grp">
+          <h3>Ph.D. candidates</h3>
+          <ul class="roster">
+            <li class="person"><img class="ph" src="img/people/hongmin-an.jpg" alt="Portrait of Hongmin An" width="288" height="360"><div><div class="n">Hongmin An<span class="role">Lab leader</span></div><div class="bg">B.S., Chemical &amp; Biomolecular Eng., KAIST (2023)</div><div class="em"><a href="mailto:ahm1604@kaist.ac.kr">ahm1604@kaist.ac.kr</a></div></div></li>
+            <li class="person"><img class="ph" src="img/people/hanjoo-kim.jpg" alt="Portrait of Hanjoo Kim" width="288" height="360"><div><div class="n">Hanjoo Kim</div><div class="bg">B.S., Chemistry, GIST (2022)<br>M.S., Chemical &amp; Biomolecular Eng., KAIST (2024)</div><div class="em"><a href="mailto:hjkim9706@kaist.ac.kr">hjkim9706@kaist.ac.kr</a></div></div></li>
+            <li class="person"><img class="ph" src="img/people/jongsu-noh.jpg" alt="Portrait of Jongsu Noh" width="288" height="360"><div><div class="n">Jongsu Noh<span class="role">Safety leader</span></div><div class="bg">B.S., Chemistry, GIST (2023)<br>M.S., Chemical &amp; Biomolecular Eng., KAIST (2025)</div><div class="em"><a href="mailto:whdtn3146@kaist.ac.kr">whdtn3146@kaist.ac.kr</a></div></div></li>
+            <li class="person"><img class="ph" src="img/people/wonik-jang.jpg" alt="Portrait of Wonik Jang" width="288" height="360"><div><div class="n">Wonik Jang</div><div class="bg">B.S. (2023) / M.S. (2026), Chemical Engineering, KNU</div><div class="em"><a href="mailto:wonik.jang@kaist.ac.kr">wonik.jang@kaist.ac.kr</a></div></div></li>
+            <li class="person"><img class="ph" src="img/people/soyeong-jo.jpg" alt="Portrait of Soyeong Jo" width="288" height="360"><div><div class="n">Soyeong Jo</div><div class="bg">M.S., Chemistry, PNU (2023)</div><div class="em"><a href="mailto:soyeong@kaist.ac.kr">soyeong@kaist.ac.kr</a></div></div></li>
+          </ul>
+        </div>
+        <div class="grp">
+          <h3>M.S. candidates</h3>
+          <ul class="roster">
+            <li class="person"><img class="ph" src="img/people/jiwoo-lee.jpg" alt="Portrait of Jiwoo Lee" width="288" height="360"><div><div class="n">Jiwoo Lee</div><div class="bg">B.S., Chemical &amp; Biomolecular Eng., Yonsei (2025)</div><div class="em"><a href="mailto:jiwoo862@kaist.ac.kr">jiwoo862@kaist.ac.kr</a></div></div></li>
+            <li class="person"><img class="ph" src="img/people/gyujin-choi.jpg" alt="Portrait of Gyujin Choi" width="288" height="360"><div><div class="n">Gyujin Choi</div><div class="bg">B.S., Chemical &amp; Biomolecular Eng., Sogang (2025)</div><div class="em"><a href="mailto:gyujin@kaist.ac.kr">gyujin@kaist.ac.kr</a></div></div></li>
+            <li class="person"><img class="ph" src="img/people/dayun-kim.jpg" alt="Portrait of Dayun Kim" width="288" height="360"><div><div class="n">Dayun Kim</div><div class="bg">B.S., Chemical Engineering, Chung-Ang (2026)</div><div class="em"><a href="mailto:k.dayun@kaist.ac.kr">k.dayun@kaist.ac.kr</a></div></div></li>
+            <li class="person"><img class="ph" src="img/people/wonjun-lee.jpg" alt="Portrait of Wonjun Lee" width="288" height="360"><div><div class="n">Wonjun Lee</div><div class="bg">B.S., Materials Science &amp; Engineering, DGIST (2026)</div><div class="em"><a href="mailto:leewonjun@kaist.ac.kr">leewonjun@kaist.ac.kr</a></div></div></li>
+            <li class="person"><img class="ph" src="img/people/sukyeong-park.jpg" alt="Portrait of Sukyeong Park" width="288" height="360"><div><div class="n">Sukyeong Park</div><div class="bg">B.S., Chemical &amp; Biomolecular Eng., Korea University (2026)</div><div class="em"><a href="mailto:psk408@kaist.ac.kr">psk408@kaist.ac.kr</a></div></div></li>
+            <li class="person"><img class="ph" src="img/people/nayeon-lee.jpg" alt="Portrait of Nayeon Lee" width="288" height="360"><div><div class="n">Nayeon Lee</div><div class="bg">B.S., Chemical Engineering, Konkuk (2026)</div><div class="em"><a href="mailto:dlskdus0804@kaist.ac.kr">dlskdus0804@kaist.ac.kr</a></div></div></li>
+          </ul>
+        </div>
+        <div class="grp">
+          <h3>Alumni</h3>
+          <ul class="alumni">
+            <li><span class="y">2026</span><span>Jongmin Lee</span><span class="d">LG Energy Solution</span></li>
+            <li><span class="y">2026</span><span>Wonchul Park</span><span class="d">Ph.D., University of Texas at Austin</span></li>
+            <li><span class="y">2025</span><span>Jinyeop Kim</span><span class="d">Lotte Chemical</span></li>
+            <li><span class="y">2025</span><span>Hyein Park</span><span class="d">Ph.D., KAIST Materials Science &amp; Engineering</span></li>
+            <li><span class="y">2025</span><span>Youngwook Jeong</span><span class="d">LG Energy Solution</span></li>
+            <li><span class="y">2025</span><span>Jongsu Noh</span><span class="d">Ph.D., EDL-LAB</span></li>
+            <li><span class="y">2024</span><span>Hanjoo Kim</span><span class="d">Ph.D., EDL-LAB</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications -->
+  <section class="sec" id="publications" aria-labelledby="pub-h">
+    <div class="wrap sec-grid">
+      <div class="sec-head">
+        <h2 id="pub-h">Publications</h2>
+        <p><span id="pub-total">87</span> published papers since 2011, plus work in preparation and under review. Highlights first, then the complete list.</p>
+      </div>
+      <div>
+        <p class="sub-h">Highlights</p>
+        <div>
+          <div class="hl"><span class="ref">J. Am. Chem. Soc. 2026, 148, 6045–6056</span><div><div class="ttl">Dynamic Interface Engineering via Mechanistic Understanding of Copper Reconstruction in Electrochemical CO₂ Reduction Reaction</div><div class="au">Hanjoo Kim, Hongmin An, Jinyeop Kim, Hyein Park, Chanwook Cha, Robert Haaring, Hyunjoo Lee, Koohee Han, <strong>Dong Young Chung</strong></div></div></div>
+          <div class="hl"><span class="ref">ACS Energy Lett. 2025, 10, 2574–2581</span><div><div class="ttl">Operational Stability Factor: A Comprehensive Metric for Assessing Catalyst Durability in Dynamic Water Electrolyzer Conditions</div><div class="au">Jinyeop Kim, Jongsu Noh, <strong>Dong Young Chung</strong></div></div></div>
+          <div class="hl"><span class="ref">J. Am. Chem. Soc. 2025, 147, 16340–16349</span><div><div class="ttl">Deciphering Catalyst-Support Interaction via Doping for Highly Active and Durable Oxygen Evolution Catalysis</div><div class="au">Jinyeop Kim, Jinglong Guo, Nannan Shan, Jimun Yoo, Pedro Farinazzo Bergamo Dias Martins, Jongsu Noh, Moonjung Jung, Peter Zapol, Bongjin Mun, Robert Klie, Pietro Lopes, Nenad Markovic, <strong>Dong Young Chung</strong></div></div></div>
+          <div class="hl"><span class="ref">J. Am. Chem. Soc. 2021, 143, 2741–2750</span><div><div class="ttl">Dynamically stable active sites from surface evolution of perovskite materials during oxygen evolution reaction</div><div class="au">Pietro P. Lopes*, <strong>Dong Young Chung*</strong>, Xue Rui*, Zheng Hong, Haiying He, Pedro F. B. D. Martins, Dusan Strmcnik, Vojislav R. Stamenkovic, Peter Zapol, J. F. Mitchell, Robert Klie, Nenad M. Markovic <span class="eqn">* Equal contribution</span></div></div></div>
+          <div class="hl"><span class="ref">Nat. Energy 2020, 5, 222–230</span><div><div class="ttl">Dynamic stability of active sites in hydr(oxy)oxides for the oxygen evolution reaction</div><div class="au"><strong>Dong Young Chung</strong>, Pietro P. Lopes, Pedro F. B. D. Martins, Haiying He, Tomoya Gawaguchi, Peter Zapol, Hoydoo You, Dusan Tripkovic, Dusan Strmcnik, Yisi Zhu, Soenke Seifert, Sungsik Lee, Vojislav R. Stamenkovic, Nenad M. Markovic</div></div></div>
+        </div>
+
+        <div class="recent-head">
+          <p class="sub-h" style="margin:0">All publications</p>
+          <p class="mono count" id="pub-count" aria-live="polite"></p>
+        </div>
+        <div class="filter" id="pub-filter" role="group" aria-label="Filter by period"></div>
+        <div class="search">
+          <label class="sr" for="pub-q">Search publications</label>
+          <input id="pub-q" class="q" type="search" placeholder="Search title, author or journal" autocomplete="off">
+        </div>
+        <div id="pub-list"></div>
+        <p class="more">Also listed on <a href="https://scholar.google.com/citations?user=2eYRWmYAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Album -->
+  <section class="sec" id="album" aria-labelledby="album-h">
+    <div class="wrap sec-grid">
+      <div class="sec-head">
+        <h2 id="album-h">Album</h2>
+        <p>Conferences, collaborations, seminars and everyday life in the lab.</p>
+      </div>
+      <div>
+        <div class="alb-head">
+          <div class="filter" id="alb-filter" role="group" aria-label="Filter by category"></div>
+          <p class="mono count" id="alb-count" aria-live="polite"></p>
+        </div>
+        <div id="alb-out"></div>
+        <dialog class="dlg" id="alb-dlg" aria-label="Photo">
+          <form method="dialog"><button class="dlg-x" id="alb-dlg-x" aria-label="Close photo">×</button></form>
+          <img id="alb-dlg-img" alt="">
+          <p id="alb-dlg-cap"></p>
+        </dialog>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact" aria-labelledby="contact-h">
+    <div class="wrap sec-grid">
+      <div>
+        <h2 id="contact-h">Join the group</h2>
+        <p class="join">We welcome inquiries from graduate students and postdoctoral researchers interested in electrochemical interfaces, operando diagnostics and device-level testing. Send a short note and your CV to Prof. Chung.</p>
+      </div>
+      <div>
+        <p><a class="mail" href="mailto:dychung@kaist.ac.kr">dychung@kaist.ac.kr</a></p>
+        <dl class="addr" style="margin-top:26px">
+          <div><dt>Address</dt><dd>Department of Chemical &amp; Biomolecular Engineering<br>Korea Advanced Institute of Science and Technology (KAIST)<br>291 Daehak-ro, Yuseong-gu, Daejeon 34141, Republic of Korea</dd></div>
+          <div><dt>Elsewhere</dt><dd><a href="https://scholar.google.com/citations?user=2eYRWmYAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a></dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Electrochemistry Discovery Laboratory (EDL-LAB), KAIST</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script src="papers.js"></script>
+<script src="album.js"></script>
+<script>
+(function () {
+
+  var listEl = document.getElementById('pub-list');
+  var filterEl = document.getElementById('pub-filter');
+  var qEl = document.getElementById('pub-q');
+  var countEl = document.getElementById('pub-count');
+
+  var pubYears = PUBS.map(function (p) { return p.y; }).filter(function (y) { return typeof y === 'number'; });
+  var maxYear = Math.max.apply(null, pubYears);
+  function yearGroup(y) { return { id: String(y), label: String(y), test: function (p) { return p.y === y; } }; }
+  function rangeGroup(a, b) { return { id: a + '-' + String(b).slice(2), label: a + '\u2013' + b, test: function (p) { return p.y >= a && p.y <= b; } }; }
+  var GROUPS = [
+    { id: 'all', label: 'All', test: function () { return true; } },
+    { id: 'pending', label: 'In prep. / submitted / revision', test: function (p) { return p.y === 'pending'; } }
+  ];
+  for (var yy = maxYear; yy >= 2023; yy--) GROUPS.push(yearGroup(yy));
+  GROUPS.push(rangeGroup(2020, 2022), rangeGroup(2016, 2019), rangeGroup(2011, 2015));
+  var totalEl = document.getElementById('pub-total');
+  if (totalEl) totalEl.textContent = PUBS.filter(function (p) { return typeof p.n === 'number'; }).length;
+  var current = 'all';
+
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function authors(s) { return esc(s).replace(/Dong Young (Chung|Jung)\*?/g, '<strong>$&</strong>'); }
+  function hay(p) { return (p.ref + ' ' + p.t + ' ' + p.a).toLowerCase(); }
+
+  function render() {
+    var g = GROUPS.filter(function (x) { return x.id === current; })[0];
+    var q = qEl.value.trim().toLowerCase();
+    var rows = PUBS.filter(function (p) { return g.test(p) && (!q || hay(p).indexOf(q) !== -1); });
+    listEl.innerHTML = rows.length ? rows.map(function (p) {
+      var eq = p.a.indexOf('*') !== -1;
+      return '<article class="pub"><div class="ref">' + (p.n ? '<span class="no">[' + p.n + ']</span>' : '') + esc(p.ref) + '</div><div>' +
+        '<div class="ttl">' + esc(p.t) + (p.c ? '<span class="corr">Corresponding</span>' : '') + '</div>' +
+        '<div class="au">' + authors(p.a) + (eq ? ' <span class="eqn">* Equal contribution</span>' : '') + '</div>' +
+        (p.note ? '<div class="note">' + esc(p.note) + '</div>' : '') + '</div></article>';
+    }).join('') : '<p class="none">No papers match your search.</p>';
+    countEl.textContent = rows.length + (rows.length === 1 ? ' paper' : ' papers');
+    Array.prototype.forEach.call(filterEl.children, function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-g') === current));
+    });
+  }
+
+  GROUPS.forEach(function (g) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'fbtn';
+    b.id = 'pub-f-' + g.id;
+    b.setAttribute('data-g', g.id);
+    b.textContent = g.label + ' · ' + PUBS.filter(g.test).length;
+    b.addEventListener('click', function () { current = g.id; render(); });
+    filterEl.appendChild(b);
+  });
+  qEl.addEventListener('input', render);
+  render();
+})();
+</script>
+
+<script>
+(function () {
+  ITEMS.forEach(function (it, i) { it.n = i + 1; });
+
+  var CATS = ['All', 'Lab life', 'Conferences', 'Collaborations', 'Seminars'];
+  var current = 'All';
+  var out = document.getElementById('alb-out');
+  var filterEl = document.getElementById('alb-filter');
+  var countEl = document.getElementById('alb-count');
+  var dlg = document.getElementById('alb-dlg');
+  var CAM = '<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8h3.2l1.5-2h7.6l1.5 2h3.2v11h-17z"/><circle cx="12" cy="13" r="3.6"/></svg>';
+
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+  function render() {
+    var rows = ITEMS.filter(function (i) { return current === 'All' || i.cat === current; });
+    out.className = 'alb-grid';
+    out.innerHTML = rows.map(function (i) {
+      var media = i.img
+        ? '<img src="' + esc(i.img) + '" alt="' + esc(i.c) + '" loading="lazy" data-n="' + i.n + '">'
+        : '<div class="alb-ph" role="img" aria-label="Photo to be added: ' + esc(i.c) + '"><span class="no">' + pad(i.n) + '</span>' + CAM + '</div>';
+      return '<figure class="alb-item">' + media + '<figcaption><span class="cat">' + esc(i.cat) + '</span>' + esc(i.c) + '</figcaption></figure>';
+    }).join('');
+    countEl.textContent = rows.length + (rows.length === 1 ? ' photo' : ' photos');
+    Array.prototype.forEach.call(filterEl.children, function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-c') === current));
+    });
+  }
+
+  out.addEventListener('click', function (e) {
+    var img = e.target.closest ? e.target.closest('img[data-n]') : null;
+    if (!img || !dlg || typeof dlg.showModal !== 'function') return;
+    var it = ITEMS[Number(img.getAttribute('data-n')) - 1];
+    document.getElementById('alb-dlg-img').src = it.img;
+    document.getElementById('alb-dlg-img').alt = it.c;
+    document.getElementById('alb-dlg-cap').textContent = it.c;
+    dlg.showModal();
+  });
+  if (dlg) dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+
+  CATS.forEach(function (c) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'fbtn';
+    b.id = 'alb-f-' + c.replace(/\s+/g, '-').toLowerCase();
+    b.setAttribute('data-c', c);
+    var n = c === 'All' ? ITEMS.length : ITEMS.filter(function (i) { return i.cat === c; }).length;
+    b.textContent = c + ' · ' + n;
+    b.addEventListener('click', function () { current = c; render(); });
+    filterEl.appendChild(b);
+  });
+  render();
+})();
+</script>
+
+</body>
+</html>

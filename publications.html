@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="EDL-LAB at KAIST (Electrochemistry Discovery Laboratory, PI Dong Young Chung): electrochemistry, electrocatalysis and electroanalytical chemistry.">
+<meta property="og:title" content="EDL-LAB at KAIST">
+<meta property="og:description" content="Electrochemistry, electrocatalysis and electroanalytical chemistry at KAIST.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230A3D91'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' font-weight='600' text-anchor='middle' fill='white'%3EE%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<link rel="stylesheet" href="style.css">
+<title>Publications – EDL-LAB at KAIST</title>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="EDL-LAB home">
+      <svg width="22" height="22" viewBox="0 0 22 22" role="presentation" aria-hidden="true">
+        <rect x="1" y="1" width="5" height="20" fill="var(--accent)"/>
+        <line x1="11" y1="1" x2="11" y2="21" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="2 2.5"/>
+        <line x1="17" y1="1" x2="17" y2="21" stroke="var(--accent-2)" stroke-width="1.5" stroke-dasharray="2 2.5"/>
+      </svg>
+      <span>EDL-LAB <small>/ KAIST</small></span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="research.html">Research</a>
+      <a href="pi.html">PI</a>
+      <a href="people.html">People</a>
+      <a href="publications.html" aria-current="page">Publications</a>
+      <a href="album.html">Album</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="sec" id="publications" aria-labelledby="pub-h">
+    <div class="wrap sec-grid">
+      <div class="sec-head">
+        <h2 id="pub-h">Publications</h2>
+        <p><span id="pub-total">87</span> published papers since 2011, plus work in preparation and under review. Highlights first, then the complete list.</p>
+      </div>
+      <div>
+        <p class="sub-h">Highlights</p>
+        <div>
+          <div class="hl"><span class="ref">J. Am. Chem. Soc. 2026, 148, 6045–6056</span><div><div class="ttl">Dynamic Interface Engineering via Mechanistic Understanding of Copper Reconstruction in Electrochemical CO₂ Reduction Reaction</div><div class="au">Hanjoo Kim, Hongmin An, Jinyeop Kim, Hyein Park, Chanwook Cha, Robert Haaring, Hyunjoo Lee, Koohee Han, <strong>Dong Young Chung</strong></div></div></div>
+          <div class="hl"><span class="ref">ACS Energy Lett. 2025, 10, 2574–2581</span><div><div class="ttl">Operational Stability Factor: A Comprehensive Metric for Assessing Catalyst Durability in Dynamic Water Electrolyzer Conditions</div><div class="au">Jinyeop Kim, Jongsu Noh, <strong>Dong Young Chung</strong></div></div></div>
+          <div class="hl"><span class="ref">J. Am. Chem. Soc. 2025, 147, 16340–16349</span><div><div class="ttl">Deciphering Catalyst-Support Interaction via Doping for Highly Active and Durable Oxygen Evolution Catalysis</div><div class="au">Jinyeop Kim, Jinglong Guo, Nannan Shan, Jimun Yoo, Pedro Farinazzo Bergamo Dias Martins, Jongsu Noh, Moonjung Jung, Peter Zapol, Bongjin Mun, Robert Klie, Pietro Lopes, Nenad Markovic, <strong>Dong Young Chung</strong></div></div></div>
+          <div class="hl"><span class="ref">J. Am. Chem. Soc. 2021, 143, 2741–2750</span><div><div class="ttl">Dynamically stable active sites from surface evolution of perovskite materials during oxygen evolution reaction</div><div class="au">Pietro P. Lopes*, <strong>Dong Young Chung*</strong>, Xue Rui*, Zheng Hong, Haiying He, Pedro F. B. D. Martins, Dusan Strmcnik, Vojislav R. Stamenkovic, Peter Zapol, J. F. Mitchell, Robert Klie, Nenad M. Markovic <span class="eqn">* Equal contribution</span></div></div></div>
+          <div class="hl"><span class="ref">Nat. Energy 2020, 5, 222–230</span><div><div class="ttl">Dynamic stability of active sites in hydr(oxy)oxides for the oxygen evolution reaction</div><div class="au"><strong>Dong Young Chung</strong>, Pietro P. Lopes, Pedro F. B. D. Martins, Haiying He, Tomoya Gawaguchi, Peter Zapol, Hoydoo You, Dusan Tripkovic, Dusan Strmcnik, Yisi Zhu, Soenke Seifert, Sungsik Lee, Vojislav R. Stamenkovic, Nenad M. Markovic</div></div></div>
+        </div>
+
+        <div class="recent-head">
+          <p class="sub-h" style="margin:0">All publications</p>
+          <p class="mono count" id="pub-count" aria-live="polite"></p>
+        </div>
+        <div class="filter" id="pub-filter" role="group" aria-label="Filter by period"></div>
+        <div class="search">
+          <label class="sr" for="pub-q">Search publications</label>
+          <input id="pub-q" class="q" type="search" placeholder="Search title, author or journal" autocomplete="off">
+        </div>
+        <div id="pub-list"></div>
+        <p class="more">Also listed on <a href="https://scholar.google.com/citations?user=2eYRWmYAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>&copy; 2026 Electrochemistry Discovery Laboratory (EDL-LAB), KAIST</span>
+    <a href="index.html">Back to top &uarr;</a>
+  </div>
+</footer>
+<script src="papers.js"></script>
+<script>
+(function () {
+
+  var listEl = document.getElementById('pub-list');
+  var filterEl = document.getElementById('pub-filter');
+  var qEl = document.getElementById('pub-q');
+  var countEl = document.getElementById('pub-count');
+
+  var pubYears = PUBS.map(function (p) { return p.y; }).filter(function (y) { return typeof y === 'number'; });
+  var maxYear = Math.max.apply(null, pubYears);
+  function yearGroup(y) { return { id: String(y), label: String(y), test: function (p) { return p.y === y; } }; }
+  function rangeGroup(a, b) { return { id: a + '-' + String(b).slice(2), label: a + '\u2013' + b, test: function (p) { return p.y >= a && p.y <= b; } }; }
+  var GROUPS = [
+    { id: 'all', label: 'All', test: function () { return true; } },
+    { id: 'pending', label: 'In prep. / submitted / revision', test: function (p) { return p.y === 'pending'; } }
+  ];
+  for (var yy = maxYear; yy >= 2023; yy--) GROUPS.push(yearGroup(yy));
+  GROUPS.push(rangeGroup(2020, 2022), rangeGroup(2016, 2019), rangeGroup(2011, 2015));
+  var totalEl = document.getElementById('pub-total');
+  if (totalEl) totalEl.textContent = PUBS.filter(function (p) { return typeof p.n === 'number'; }).length;
+  var current = 'all';
+
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function authors(s) { return esc(s).replace(/Dong Young (Chung|Jung)\*?/g, '<strong>$&</strong>'); }
+  function hay(p) { return (p.ref + ' ' + p.t + ' ' + p.a).toLowerCase(); }
+
+  function render() {
+    var g = GROUPS.filter(function (x) { return x.id === current; })[0];
+    var q = qEl.value.trim().toLowerCase();
+    var rows = PUBS.filter(function (p) { return g.test(p) && (!q || hay(p).indexOf(q) !== -1); });
+    listEl.innerHTML = rows.length ? rows.map(function (p) {
+      var eq = p.a.indexOf('*') !== -1;
+      return '<article class="pub"><div class="ref">' + (p.n ? '<span class="no">[' + p.n + ']</span>' : '') + esc(p.ref) + '</div><div>' +
+        '<div class="ttl">' + esc(p.t) + (p.c ? '<span class="corr">Corresponding</span>' : '') + '</div>' +
+        '<div class="au">' + authors(p.a) + (eq ? ' <span class="eqn">* Equal contribution</span>' : '') + '</div>' +
+        (p.note ? '<div class="note">' + esc(p.note) + '</div>' : '') + '</div></article>';
+    }).join('') : '<p class="none">No papers match your search.</p>';
+    countEl.textContent = rows.length + (rows.length === 1 ? ' paper' : ' papers');
+    Array.prototype.forEach.call(filterEl.children, function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-g') === current));
+    });
+  }
+
+  GROUPS.forEach(function (g) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'fbtn';
+    b.id = 'pub-f-' + g.id;
+    b.setAttribute('data-g', g.id);
+    b.textContent = g.label + ' · ' + PUBS.filter(g.test).length;
+    b.addEventListener('click', function () { current = g.id; render(); });
+    filterEl.appendChild(b);
+  });
+  qEl.addEventListener('input', render);
+  render();
+})();
+</script>
+</body>
+</html>

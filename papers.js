@@ -22,13 +22,13 @@
    - 연도 필터 버튼과 "87 published papers" 문구, 논문 수는 자동으로 계산됩니다.
    ============================================================ */
 var PUBS = [
-    { n: null, y: "pending", ref: "In revision", t: "Ultrahigh-Loading Intermetallic Pt-Co Alloy Production for High Performance Heavy-Duty Fuel Cells", a: "Jongmin Lee et al.", c: true },
     { n: null, y: "pending", ref: "In preparation", t: "Perception of activity for single atom site electrocatalysts in porous environments", a: "Subin Park et al.", c: true },
     { n: null, y: "pending", ref: "In preparation", t: "Reversible Active-Site Exchange Enables Stability in Single-Atom Catalysts", a: "Jinyeop Kim et al.", c: true },
+    { n: null, y: "pending", ref: "In preparation", t: "Mechanism-Guided Accelerated Durability Testing of Carbon-Supported Pt Catalysts via Multimodal In Situ Analysis", a: "Hongmin An et al.", c: true },
     { n: null, y: "pending", ref: "Submitted", t: "Decoupling of topological surface states from catalytic activity in the chiral topological semimetal PtGa", a: "Jongkeun Jung et al.", c: false },
-    { n: null, y: "pending", ref: "Submitted", t: "Mechanism-Guided Accelerated Durability Testing of Carbon-Supported Pt Catalysts via Multimodal In Situ Analysis", a: "Hongmin An et al.", c: true },
-    { n: null, y: "pending", ref: "In revision", t: "Suppressing Bubble-Induced Nanoparticle Migration Enables Durable Cathodes for AEM Water Electrolysis", a: "Soyeong Jo et al.", c: true },
     { n: null, y: "pending", ref: "Submitted", t: "Room-Temperature Synthesis of Transition Metal Nitride Nanocatalysts for Electrochemical Oxygen Evolution", a: "Jin Soo Kang et al.", c: false },
+    { n: null, y: "pending", ref: "In revision", t: "Ultrahigh-Loading Intermetallic Pt-Co Alloy Production for High Performance Heavy-Duty Fuel Cells", a: "Jongmin Lee et al.", c: true },
+    { n: null, y: "pending", ref: "In revision", t: "Suppressing Bubble-Induced Nanoparticle Migration Enables Durable Cathodes for AEM Water Electrolysis", a: "Soyeong Jo et al.", c: true },
     { n: 89, y: 2026, ref: "ACS Catal. 2026", t: "Unseen but Avoidable: How Impurities Bias Electrocatalysis from Interface to Interpretation", a: "Hongmin An, Jongsu Noh, Jinyeop Kim, Alasdair R Fairhurst, Ethan J Schoettler, Kentaro Nakamura, Vojislav R Stamenkovic, Dong Young Chung", c: true },
     { n: 88, y: 2026, ref: "J. Am. Chem. Soc. 2026", t: "Regime-Switching Control of C–N Bond Evolution in Electrochemical Methylamine Oxidation", a: "Shuai Yan, Hanjoo Kim, Dong Young Chung, Nikolay Kornienko", c: true },
     { n: 87, y: 2026, ref: "Surf. Interfaces 2026, 110345", t: "Operando study of CO₂ adsorption on PtGa (111) surface with ambient pressure XPS", a: "Subin Jang, Minsik Seo, Hyunsuk Shin, Dongwoo Kim, Kyungmin Kim, Hojoon Lim, Hanjoo Kim, Jongkeun Jung, Dong Young Jung, Sung Jong Yoo, Jeongjin Kim, Lenart Dudy, Jean-Jacques Gallet, Fabrice Bournel, Bongjin Simon Mun", c: false },

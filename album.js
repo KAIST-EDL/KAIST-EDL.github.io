@@ -16,9 +16,9 @@
    - 번호(01, 02, ...)는 위에서부터 자동으로 매겨집니다.
    ============================================================ */
 var ITEMS = [
-    { c: "From NTU with KAIST with HJ ", cat: "Conferences", img: "img/album/47.jpg" },  
-    { c: "From NTU ", cat: "Collaborations", img: "img/album/49.jpg" }, 
-    { c: "With Prof. Rick, Federico", cat: "Collaborations", img: "img/album/48.jpg" },
+    { c: "KAIST–NTU Joint Workshop with HJ ", cat: "Conferences", img: "img/album/47.jpg" },  
+    { c: "With NTU ", cat: "Collaborations", img: "img/album/49.jpg" }, 
+    { c: "With Leiden, Basque (Prof. Rick, Federico)", cat: "Collaborations", img: "img/album/48.jpg" },
     { c: "With Fudan Chemistry (Prof. Wen-Bin, Kun, Ming)", cat: "Collaborations", img: "img/album/01.jpg" },
     { c: "7th EDL culture day (strawberry party)", cat: "Lab life", img: "img/album/02.jpg" },
     { c: "The Korean Electrochemical Society in Busan (2026 spring)", cat: "Conferences", img: "img/album/03.jpg" },
